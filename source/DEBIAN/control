@@ -1,0 +1,8 @@
+Package: yt-dlp-zenity
+Version: 0.1
+Architecture: amd64
+Maintainer: Yamato Tanikawa <tanick_developer@outlook.jp>
+Depends: ffmpeg, zenity
+Section: unknown
+Priority: optional
+Description: gui frontend for yt-dlp

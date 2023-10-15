@@ -1,0 +1,32 @@
+#!/bin/bash
+
+url=$( \
+    zenity \
+    --entry \
+    --title="yt-dlp-zenity" \
+    --text="URLを入力してください。"
+)
+
+ext=$( \
+    zenity \
+    --list \
+    --title="yt-dlp-zenity" \
+    --text="拡張子を選択してください。" \
+    --hide-header \
+    --radiolist \
+    --column="" --column="" \
+    False "mp3" \
+    False "mp4"
+)
+
+path=$( \
+    zenity \
+    --file-selection \
+    --title="ダウンロード先の選択" \
+    --directory
+)
+
+case ${ext} in
+  mp3) yt-dlp_linux -i -P ${path} -x --audio-format mp3 ${url} ;;
+  mp4) yt-dlp_linux -i -P ${path} -f mp4 --embed-thumbnail ${url} ;;
+esac
